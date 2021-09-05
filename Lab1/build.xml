@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<project name="Lab1" default="deploy">
+    <!-- define names of directories -->
+    <property name="src" location="src"/>
+    <property name="web" location="web"/>
+    <property name="index.page" location="${web}/address.html"/>
+
+    <property name="war" location="war"/>
+    <property name="war.path" location="${war}/Lab1.war"/>
+
+    <property name="glassfish" location="D:\Danil\university\4\PiI\glassfish5\bin\asadmin.bat"/>
+
+    <property name="build" location="build"/>
+    <property name="classes" location="${build}/classes"/>
+
+    <!-- define all targets -->
+    <target name="clean">
+        <delete dir="${classes}"/>
+        <delete dir="${war.path}"/>
+        <delete dir="${war}"/>
+        <delete dir="${build}"/>
+        <exec executable="${glassfish}">
+            <arg value="stop-domain"/>
+        </exec>
+    </target>
+
+    <target name="init" depends="clean">
+        <mkdir dir="${classes}"/>
+        <mkdir dir="${build}"/>
+        <javac destdir="${classes}" includeantruntime="false">
+            <src path="${src}"/>
+        </javac>
+    </target>
+
+    <target name="build.war" depends="init">
+        <war destfile="${war.path}" webxml="web/WEB-INF/web.xml">
+            <fileset dir="${web}"/>
+            <classes dir="${classes}"/>
+        </war>
+    </target>
+
+    <target name="deploy" depends="build.war">
+        <exec executable="${glassfish}">
+            <arg value="start-domain"/>
+        </exec>
+        <exec executable="${glassfish}">
+            <arg value="deploy"/>
+            <arg value="--force=true"/>
+            <arg value="${war.path}"/>
+        </exec>
+        <exec executable="${glassfish}">
+            <arg value="list-applications"/>
+            <arg value="--type"/>
+            <arg value="web"/>
+        </exec>
+    </target>
+</project>
