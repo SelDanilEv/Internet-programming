@@ -4,6 +4,14 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
     <welcome-file-list>
-        <welcome-file>address.html</welcome-file>
+        <welcome-file>index.html</welcome-file>
     </welcome-file-list>
+    <servlet>
+        <servlet-name>SSS_first</servlet-name>
+        <servlet-class>Sss</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SSS_first</servlet-name>
+        <url-pattern>/GoSss</url-pattern>
+    </servlet-mapping>
 </web-app>

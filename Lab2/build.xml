@@ -3,13 +3,14 @@
     <!-- define names of directories -->
     <property name="src" location="src"/>
     <property name="web" location="web"/>
-    <property name="index.page" location="education.html"/>
     <property name="web.xml" location="${web}/WEB-INF/web.xml"/>
 
     <property name="war" location="war"/>
-    <property name="war.path" location="${war}/Lab1.war"/>
+    <property name="war.path" location="${war}/AS_DAN.war"/>
 
-    <property name="glassfish" location="D:\Danil\university\4\PiI\glassfish5\bin\asadmin.bat"/>
+    <property name="glassfish" location="D:\Danil\university\4\PiI\glassfish5"/>
+    <property name="glassfish.asadmin" location="${glassfish}\bin\asadmin.bat"/>
+    <property name="glassfish.module.servlet-api" location="${glassfish}\glassfish\modules\javax.servlet-api.jar"/>
 
     <property name="build" location="build"/>
     <property name="classes" location="${build}/classes"/>
@@ -20,29 +21,21 @@
         <delete dir="${war.path}"/>
         <delete dir="${war}"/>
         <delete dir="${build}"/>
-        <exec executable="${glassfish}">
+        <exec executable="${glassfish.asadmin}">
             <arg value="stop-domain"/>
         </exec>
     </target>
 
     <target name="init" depends="clean">
-        <exec executable="${glassfish}">
-            <arg value="start-domain"/>
-        </exec>
         <mkdir dir="${classes}"/>
         <mkdir dir="${build}"/>
-        <javac destdir="${classes}" includeantruntime="false">
-            <src path="${src}"/>
-        </javac>
+        <javac includeantruntime="false"
+               destdir="${classes}"
+               srcdir="${src}"
+               classpath = "${glassfish.module.servlet-api}" />
     </target>
 
     <target name="build.war" depends="init">
-<!--        <exec executable="echo">-->
-<!--            <arg value="^&lt;?xml version='1.0' encoding='UTF-8'?^>^&lt;web-app xmlns='http://xmlns.jcp.org/xml/ns/javaee' xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xsi:schemaLocation='http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd' version='4.0'^>^&lt;welcome-file-list^>^&lt;welcome-file^>${index.page}^&lt;/welcome-file^>^&lt;/welcome-file-list^>^&lt;/web-app^>"/>-->
-<!--            <arg value="^>"/>-->
-<!--            <arg value="${web.xml}"/>-->
-<!--        </exec>-->
-
         <war destfile="${war.path}" webxml="web/WEB-INF/web.xml">
             <fileset dir="${web}"/>
             <classes dir="${classes}"/>
@@ -50,15 +43,15 @@
     </target>
 
     <target name="deploy" depends="build.war">
-        <exec executable="${glassfish}">
+        <exec executable="${glassfish.asadmin}">
             <arg value="start-domain"/>
         </exec>
-        <exec executable="${glassfish}">
+        <exec executable="${glassfish.asadmin}">
             <arg value="deploy"/>
             <arg value="--force=true"/>
             <arg value="${war.path}"/>
         </exec>
-        <exec executable="${glassfish}">
+        <exec executable="${glassfish.asadmin}">
             <arg value="list-applications"/>
             <arg value="--type"/>
             <arg value="web"/>
