@@ -3,7 +3,7 @@
     <!-- define names of directories -->
     <property name="src" location="src"/>
     <property name="web" location="web"/>
-    <property name="web.xml" location="${web}/WEB-INF/web.xml"/>
+    <property name="web.xml" location="/${web}/WEB-INF/web.xml"/>
 
     <property name="war" location="war"/>
     <property name="war.path" location="${war}/AS_DAN.war"/>
@@ -36,8 +36,8 @@
     </target>
 
     <target name="build.war" depends="init">
-        <war destfile="${war.path}" webxml="web/WEB-INF/web.xml">
-            <fileset dir="${web}"/>
+        <war destfile="${war.path}" webxml="${web}/WEB-INF/web.xml">
+            <fileset dir="/${web}"/>
             <classes dir="${classes}"/>
         </war>
     </target>

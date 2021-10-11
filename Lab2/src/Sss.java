@@ -19,33 +19,28 @@ public class Sss extends HttpServlet {
     protected void service(HttpServletRequest rq, HttpServletResponse rs) throws ServletException, IOException {
         System.out.println("service " + rq.getMethod());
         PrintWriter pw = rs.getWriter();
-        pw.println(
-                "Service " + rq.getMethod() + "\n" +
-                        "ServerName: " + rq.getServerName() + "\n" +
-                        "Local Address: " + rq.getLocalAddr() + "\n" +
-                        "FirstName = " + rq.getParameter("firstname") + "\n" +
-                        "LastName = " + rq.getParameter("lastname")
-        );
+        pw.println("Service " + rq.getMethod());
+        pw.println("ServerName: " + rq.getServerName());
+        pw.println("Local Address: " + rq.getLocalAddr());
+        pw.println("FirstName: " + rq.getParameter("firstname"));
+        pw.println("LastName: " + rq.getParameter("lastname"));
+        pw.close();
     }
 
     protected void doPost(HttpServletRequest rq, HttpServletResponse rs) throws ServletException, IOException {
         PrintWriter pw = rs.getWriter();
-        pw.println(
-                "Sss " + rq.getMethod() + "\n" +
-                        "FirstName = " + rq.getParameter("firstname") + "\n" +
-                        "LastName = " + rq.getParameter("lastname")
-        );
+        pw.println("Sss: " + rq.getMethod());
+        pw.println("FirstName: " + rq.getParameter("firstname"));
+        pw.println("LastName: " + rq.getParameter("lastname"));
         pw.close();
     }
 
     protected void doGet(HttpServletRequest rq, HttpServletResponse rs) throws ServletException, IOException {
         PrintWriter pw = rs.getWriter();
-        pw.println(
-                "Sss " + rq.getMethod() +
-                        "FirstName = " + rq.getParameter("firstname") +
-                        "LastName = " + rq.getParameter("lastname") +
-                        "getRemoteHost: " + rq.getQueryString()
-        );
+        pw.println("Sss: " + rq.getMethod());
+        pw.println("FirstName: " + rq.getParameter("firstname"));
+        pw.println("LastName: " + rq.getParameter("lastname"));
+        pw.println("getRemoteHost: " + rq.getQueryString());
         pw.close();
     }
 }
