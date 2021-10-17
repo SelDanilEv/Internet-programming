@@ -45,8 +45,9 @@ public class Ggg extends HttpServlet {
         System.out.println("POST Ggg");
 //        var param = request.getParameterNames().nextElement();
 //        response.getWriter().write(param + "(post): " + request.getParameter(param));
-
-        String body = request.getReader().lines().collect(Collectors.joining(System.lineSeparator()));
-        response.getWriter().write(body);
+        
+        //Task9
+//        String body = request.getReader().lines().collect(Collectors.joining(System.lineSeparator()));
+//        response.getWriter().write(body);
     }
 }
