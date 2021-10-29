@@ -20,7 +20,7 @@
         } else if (hour < 17) {
             out.println("Good afternoon");
             pageName = "afternoon.jsp";
-        } else if (hour < 23) {
+        } else if (hour <= 23) {
             out.println("Good evening");
             pageName = "evening.jsp";
         } else {
@@ -63,12 +63,13 @@
         <button type="submit">Press</button>
     </form>
 
-    <%--    https://coderoad.ru/14580120/В-чем-разница-между-включением-файлов-с-директивой-JSP-include-действием-JSP--%>
     <jsp:include page="<%= pageName %>"/>
     ---
     <jsp:include page="/Afternoon"/>
-<%--    -----%>
-<%--    <jsp:forward page="<%= pageName %>"/>--%>
+    ---
+    <%if (pageName.equals("afternoon.jsp")) {%>
+        <jsp:forward page="<%= pageName %>"/>
+    <% } %>
 
     <form action="Jjj" method="post">
         <button type="submit">Post Jjj</button>

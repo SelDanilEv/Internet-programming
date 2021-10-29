@@ -20,6 +20,8 @@ public class Ggg extends HttpServlet {
 //        RequestDispatcher rd4 = req.getRequestDispatcher("/page.html");
 //        rd4.forward(req, resp);
 
+//        resp.sendRedirect("http://localhost:8080/Lab3/page.html");
+
 // Task5
 //        resp.getWriter().write("output Task5 from GGG");
 
@@ -27,8 +29,7 @@ public class Ggg extends HttpServlet {
 //        resp.getWriter().write("output Task 6:" + req.getQueryString());
 
 // Task 7
-//        resp.getWriter().write("query: " + req.getQueryString());
-
+        resp.getWriter().write("query: " + req.getQueryString());
     }
 
 //    @Override
@@ -47,7 +48,7 @@ public class Ggg extends HttpServlet {
 //        response.getWriter().write(param + "(post): " + request.getParameter(param));
 
         //Task9
-//        String body = request.getReader().lines().collect(Collectors.joining(System.lineSeparator()));
-//        response.getWriter().write(body);
+        String body = request.getReader().lines().collect(Collectors.joining(System.lineSeparator()));
+        response.getWriter().write(body);
     }
 }

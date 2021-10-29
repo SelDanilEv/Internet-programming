@@ -36,24 +36,23 @@ public class Sss extends HttpServlet {
 //        resp.getWriter().write("output Task5 from Sss 2");
 //        rd.forward(req, resp);
 
-
 // Task6
 //        var param = req.getParameterNames().nextElement();
 //        resp.sendRedirect("http://localhost:8080/Lab3/GGG?" + param + "=" + req.getParameter(param));
 
 //Task7
-//        var param = req.getParameterNames().nextElement();
-//        var paramValue = req.getParameter(param);
-//        HttpClient client = HttpClient.newHttpClient();
-//        HttpRequest request = HttpRequest.newBuilder()
-//                .uri(URI.create("http://localhost:8080/Lab3/GGG?" + param + "=" + paramValue))
-//                .build();
-//        try {
-//            HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
-//            resp.getWriter().write("response Task 7:" + response.body());
-//        } catch (InterruptedException e) {
-//            resp.getWriter().write("Task 7: Bad Request");
-//        }
+        var param = req.getParameterNames().nextElement();
+        var paramValue = req.getParameter(param);
+        HttpClient client = HttpClient.newHttpClient();
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create("http://localhost:8080/Lab3/GGG?" + param + "=" + paramValue))
+                .build();
+        try {
+            HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
+            resp.getWriter().write("response Task 7:" + response.body());
+        } catch (InterruptedException e) {
+            resp.getWriter().write("Task 7: Bad Request");
+        }
 
     }
 
@@ -68,11 +67,12 @@ public class Sss extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         System.out.println("POST Sss");
-        // RequestDispatcher dispatcher = request.getRequestDispatcher("/GGG");
-        // dispatcher.forward(request, response);
+//         RequestDispatcher dispatcher = request.getRequestDispatcher("/GGG");
+//         dispatcher.forward(request, response);
 //Task6
 //        response.setStatus(307);
 //        response.setHeader("Location", "http://localhost:8080/Lab3/GGG");
+
 //        response.sendRedirect("http://localhost:8080/Lab3/GGG");
 
 //Task9
