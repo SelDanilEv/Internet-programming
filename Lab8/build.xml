@@ -4,7 +4,7 @@
     <property name="web" location="web"/>
     <property name="classes" location="build/classes"/>
     <property name="war" location="war"/>
-    <property name="war.fullPath" location="${war}/Lab5.war"/>
+    <property name="war.fullPath" location="${war}/Lab8.war"/>
 
     <property name="tomcat" location="D:\Danil\university\4\PiI\apache-tomcat-10.0.10"/>
     <property name="tomcat.lib.servlet-api" location="${tomcat}\lib\servlet-api.jar"/>
