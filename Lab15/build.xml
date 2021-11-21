@@ -1,0 +1,52 @@
+<?xml version="1.0"?>
+<project name="Lab" default="deploy">
+    <property name="src" location="src"/>
+    <property name="web" location="web"/>
+    <property name="classes" location="build/classes"/>
+    <property name="war" location="war"/>
+    <property name="war.fullPath" location="${war}/Lab15.war"/>
+    <property name="local.lib" location="lib"/>
+
+    <property name="tomcat" location="D:\Danil\university\4\PiI\apache-tomcat-10.0.10"/>
+    <property name="tomcat.lib.servlet-api" location="${tomcat}\lib\servlet-api.jar"/>
+    <property name="tomcat.bin" location="${tomcat}\bin"/>
+    <property name="tomcat.bin.start" location="${tomcat.bin}\startup.bat"/>
+    <property name="tomcat.bin.stop" location="${tomcat.bin}\shutdown.bat"/>
+    <property name="tomcat.bin.catalina" location="${tomcat.bin}\catalina.bat"/>
+
+    <target name="clean">
+        <delete dir="${war}"/>
+        <delete dir="${classes}"/>
+    </target>
+
+    <target name="init" depends="clean">
+        <mkdir dir="${war}"/>
+        <mkdir dir="${classes}"/>
+    </target>
+
+    <path id="classpath">
+        <pathelement location="${src}\"/>
+        <fileset dir="${tomcat}\lib" includes="*.jar" />
+        <fileset dir="${local.lib}" includes="*.jar" />
+    </path>
+
+    <target name="build" depends="init">
+        <javac includeantruntime="false"
+               destdir="${classes}"
+               srcdir="${src}">
+            <classpath refid="classpath"/>
+        </javac>
+
+        <war destfile="${war.fullPath}" webxml="${web}\WEB-INF\web.xml">
+            <fileset dir="${web}"/>
+            <classes dir="${classes}"/>
+        </war>
+    </target>
+
+    <target name="deploy" depends="build">
+        <copy file="${war.fullPath}" todir="${tomcat}\webapps"/>
+
+        <exec executable="${tomcat.bin.stop}" />
+        <exec executable="${tomcat.bin.start}" />
+    </target>
+</project>

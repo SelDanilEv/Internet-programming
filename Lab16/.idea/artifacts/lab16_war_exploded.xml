@@ -1,0 +1,17 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="lab16:war exploded">
+    <output-path>$PROJECT_DIR$/out/artifacts/lab16_war_exploded</output-path>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="lab16" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="Java-WebSocket-1.3.8" />
+          <element id="library" level="project" name="websocket-api" />
+        </element>
+      </element>
+      <element id="javaee-facet-resources" facet="lab16/web/Web" />
+    </root>
+  </artifact>
+</component>

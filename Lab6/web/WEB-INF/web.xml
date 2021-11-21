@@ -10,14 +10,14 @@
     <servlet>
         <servlet-name>URL</servlet-name>
         <servlet-class>by.belstu.servlet.UrlServlet</servlet-class>
-        <init-param>
-            <param-name>URL1</param-name>
-            <param-value>http://localhost:8080/lab6_war_exploded/first.jsp</param-value>
-        </init-param>
-        <init-param>
-            <param-name>URL2</param-name>
-            <param-value>http://localhost:8080/lab6_war_exploded/second.jsp</param-value>
-        </init-param>
+<!--        <init-param>-->
+<!--            <param-name>URL1</param-name>-->
+<!--            <param-value>http://localhost:8080/lab6_war_exploded/first.jsp</param-value>-->
+<!--        </init-param>-->
+<!--        <init-param>-->
+<!--            <param-name>URL2</param-name>-->
+<!--            <param-value>http://localhost:8080/lab6_war_exploded/second.jsp</param-value>-->
+<!--        </init-param>-->
     </servlet> 
     <servlet-mapping>
         <servlet-name>URL</servlet-name>
@@ -33,12 +33,12 @@
         <url-pattern>/ccc</url-pattern>
     </servlet-mapping>
 
-<!--    <context-param>-->
-<!--        <param-name>URL1</param-name>-->
-<!--        <param-value>http://localhost:8080/lab6_war_exploded/first.jsp</param-value>-->
-<!--    </context-param>-->
-<!--    <context-param>-->
-<!--        <param-name>URL2</param-name>-->
-<!--        <param-value>http://localhost:8080/lab6_war_exploded/second.jsp</param-value>-->
-<!--    </context-param>-->
+    <context-param>
+        <param-name>URL1</param-name>
+        <param-value>http://localhost:8080/lab6_war_exploded/first.jsp</param-value>
+    </context-param>
+    <context-param>
+        <param-name>URL2</param-name>
+        <param-value>http://localhost:8080/lab6_war_exploded/second.jsp</param-value>
+    </context-param>
 </web-app>

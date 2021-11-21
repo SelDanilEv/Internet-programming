@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+         version="4.0">
+    <welcome-file-list>
+        <welcome-file>/index.jsp</welcome-file>
+    </welcome-file-list>
+
+    <servlet>
+        <servlet-name>Sss</servlet-name>
+        <servlet-class>servlet.Sss</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Sss</servlet-name>
+        <url-pattern>/sss</url-pattern>
+    </servlet-mapping>
+
+    <context-param>
+        <param-name>to</param-name>
+        <param-value>sdanilev@gmail.com</param-value>
+    </context-param>
+    <context-param>
+        <param-name>from</param-name>
+        <param-value>Defender_GGWP &lt;EconoMiCAPPSD@gmail.com&gt;</param-value>
+    </context-param>
+    <context-param>
+        <param-name>username</param-name>
+        <param-value>EconoMiCAPPSD@gmail.com</param-value>
+    </context-param>
+    <context-param>
+        <param-name>password</param-name>
+        <param-value></param-value>
+    </context-param>
+
+    <context-param>
+        <param-name>host</param-name>
+        <param-value>smtp.gmail.com</param-value>
+    </context-param>
+    <context-param>
+        <param-name>port</param-name>
+        <param-value>587</param-value>
+    </context-param>
+
+    <context-param>
+        <param-name>hostImaps</param-name>
+        <param-value>imap.gmail.com</param-value>
+    </context-param>
+    <context-param>
+        <param-name>portImaps</param-name>
+        <param-value>993</param-value>
+    </context-param>
+
+    <context-param>
+        <param-name>hostPop</param-name>
+        <param-value>pop.gmail.com</param-value>
+    </context-param>
+    <context-param>
+        <param-name>portPop</param-name>
+        <param-value>995</param-value>
+    </context-param>
+</web-app>

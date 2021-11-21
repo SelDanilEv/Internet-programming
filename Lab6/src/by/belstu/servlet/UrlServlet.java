@@ -27,8 +27,8 @@ public class UrlServlet extends HttpServlet {
             if (param.equals("1")) {
                 HttpClient client = HttpClient.newHttpClient();
                 HttpRequest request = HttpRequest.newBuilder()
-                        .uri(URI.create(getInitParameter("URL1")))
-//                        .uri(URI.create(getServletContext().getInitParameter("URL1")))
+//                        .uri(URI.create(getInitParameter("URL1")))
+                        .uri(URI.create(getServletContext().getInitParameter("URL1")))
                         .build();
                 try {
                     HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
@@ -40,8 +40,8 @@ public class UrlServlet extends HttpServlet {
             } else if (param.equals("2")) {
                 HttpClient client = HttpClient.newHttpClient();
                 HttpRequest request = HttpRequest.newBuilder()
-                        .uri(URI.create(getInitParameter("URL2")))
-//                        .uri(URI.create(getServletContext().getInitParameter("URL2")))
+//                        .uri(URI.create(getInitParameter("URL2")))
+                        .uri(URI.create(getServletContext().getInitParameter("URL2")))
                         .build();
                 try {
                     HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
